@@ -6,7 +6,11 @@ const MyMdxComponent = () => {
 
     useEffect(() => {
         const fetchData = async () => {
-            const response = await fetch('./data.php'); // Ensure this path is correct
+            const response = await fetch('https://beff.info/data.php'); // Update this URL
+            if (!response.ok) {
+                console.error('Error fetching data:', response.statusText);
+                return;
+            }
             const result = await response.json();
             setData(result);
         };
